@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Contato.css'
-export function Contato(){
+export function Contato(props){
+
+    const [nome,setNome] = useState('');
+    const [email,setEmail] = useState('');
+    const [meuTexto,setTexto] = useState('');
 
     var styles = {
         fontSize:"20px",
@@ -13,6 +17,15 @@ export function Contato(){
         alignItems:'start',
         marginLeft:'auto',
         marginRight:'auto',
+    }
+
+    function msg(){
+        var obj = {
+            'Nome: ':nome,
+            'Email: ':email,
+            'meuTexto':meuTexto
+        }
+        console.log(obj);
     }
 
     let texto = (
@@ -31,16 +44,19 @@ export function Contato(){
             {texto}
             <div className='contato'>
             <div style={styles2}>
-            <label htmlFor="">Nome</label>
-            <input type="text" />
-            <label htmlFor="">Email</label>
-            <input type="email" />
-            <label htmlFor="">Mensagem</label>
-            <textarea name="msg" id="msg"></textarea>
+            <label htmlFor="nome">Nome</label>
+            <input type="text"  value={nome} onChange={(e)=>setNome(e.target.value)} />
+            <label htmlFor="email">Email</label>
+            <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
+            <label htmlFor="texto">Mensagem</label>
+            <textarea name="msg" id="msg" value={meuTexto} onChange={(e)=>setTexto(e.target.value)} ></textarea>
             </div>
             </div>
 
-            <button>Enviar</button>
+            <div className='centralizado'>
+                <button className='btn1' onClick={()=>props.setPagina('Home')}>Voltar</button>
+                <button className='btn1' onClick={msg}>Enviar</button>
+            </div>
 
         </div>
     );

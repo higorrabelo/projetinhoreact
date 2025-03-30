@@ -21,7 +21,7 @@ function exibePagina(){
     case 'FormCliente':
       return <FormCliente pagina={pagina} setPagina={setPagina} />
     case 'Contato':
-      return <Contato />
+      return <Contato pagina={pagina} setPagina={setPagina}/>
     case 'QuemSomos':
       return <QuemSomos />
     default :

@@ -5,10 +5,11 @@
     justify-content: end;
     align-items: center;
     background-color: white;
-    height: 5vh;
+    height: 10vh;
     width: 80vw;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.8);
     color: black;
+    margin-bottom: 6px;
 }
 
 .menu ul{

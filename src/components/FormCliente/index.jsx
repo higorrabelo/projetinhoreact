@@ -55,7 +55,7 @@ export function FormCliente(props){
     var style2 = {width:'20vw',marginLeft:'3px' }
 return(
     <div className="meuform">
-        <div>Formulário de Cadastro</div>
+        <h3>Formulário de Cadastro</h3>
         <br />
         <div className='item'>
         <label>Nome:</label>
@@ -74,12 +74,10 @@ return(
         <input type="password" placeholder="Repita sua Senha" value={repSenha} onChange={(e)=>setRepSenha(e.target.value)} required />
         </div>
         <div className='item'>
-        <div className='novoinput'>
         <label>Endereço:</label>
         <input type="text" style={style2} placeholder="Digite seu Endereço" value={endereco} onChange={(e)=>setEndereco(e.target.value)} required />
         <label>Número:</label>
         <input type="text" style={style}  placeholder="Número" value={numero} onChange={(e)=>setNumero(e.target.value)} required />
-        </div>
         </div>
         <div className='item'>
             <div>

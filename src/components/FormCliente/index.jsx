@@ -11,6 +11,22 @@ export function FormCliente(props){
     const [nascimento, setNascimento] = useState('');
     const [estado, setEstado] = useState('');
     const [cidade, setCidade] = useState('');
+    const [bairro,setBairro] = useState('')
+    const [cep,setCep] = useState('');
+    const [telefone,setTelefone] = useState('');
+
+    function listaEstados(){
+        const estadosBrasil = [
+            "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", 
+            "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", 
+            "RS", "RO", "RR", "SC", "SP", "SE", "TO"
+          ];
+        
+    return estadosBrasil.map((estado, index) => (
+        <option key={index} value={estado}>{estado}</option>
+    ));
+    }
+
     function mostraAlgo(){
         var objeto = {
             "Nome":nome,
@@ -21,7 +37,10 @@ export function FormCliente(props){
             "numero":numero,
             "nascimento":nascimento,
             "estado":estado,
-            "cidade":cidade
+            "cidade":cidade,
+            "telefone":telefone,
+            "cep":cep,
+            "bairro":bairro,
         }
 
         if(senha === ''){
@@ -49,10 +68,14 @@ export function FormCliente(props){
         setNascimento('');
         setEstado('');
         setCidade('');
+        setTelefone('');
+        setBairro('');
+        setCep('');
     }
 
     var style = {width:'10vw', marginLeft:'3px'}
-    var style2 = {width:'20vw',marginLeft:'3px' }
+    var style2 = {width:'25vw',marginLeft:'3px' }
+    var style3 = {width:'5vw',marginLeft:'3px' }
 return(
     <div className="meuform">
         <h3>Formulário de Cadastro</h3>
@@ -80,13 +103,21 @@ return(
         <input type="text" style={style}  placeholder="Número" value={numero} onChange={(e)=>setNumero(e.target.value)} required />
         </div>
         <div className='item'>
+        <label>Bairro:</label>
+        <input type="text" style={style}  placeholder="Bairro" value={bairro} onChange={(e)=>setBairro(e.target.value)} required />
+        <label>CEP:</label>
+        <input type="text" style={style}  placeholder="CEP" value={cep} onChange={(e)=>setCep(e.target.value)} required />
+        <label>Telefone:</label>
+        <input type="text" style={style}  placeholder="Telefone" value={telefone} onChange={(e)=>setTelefone(e.target.value)} required />
+        </div>
+        <div className='item'>
             <div>
                 <label>Data Nascimento:</label>
-                <input type="date" style={style} value={nascimento} onChange={(e)=>setNascimento(e.target.value)} required />
+                <input type="date" placeholder="Data Nascimento"  style={style} value={nascimento} onChange={(e)=>setNascimento(e.target.value)} required />
                 <label>Cidade:</label>
-                <input type="text" style={style} value={cidade} onChange={(e)=>setCidade(e.target.value)} required />
+                <input type="text" placeholder="Cidade"  style={style} value={cidade} onChange={(e)=>setCidade(e.target.value)} required />
                 <label>Estado:</label>
-                <input type="text" style={style} value={estado} onChange={(e)=>setEstado(e.target.value)} required />
+                <select placeholder="Estado" style={style3} value={estado} onChange={(e) => setEstado(e.target.value)}>{listaEstados()}</select>
             </div>
         </div>
         <div className='centralizado'>

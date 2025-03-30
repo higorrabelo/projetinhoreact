@@ -1,0 +1,12 @@
+.conteudo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    margin: 5px;
+    background-color: white;
+    width: 80vw;
+
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.8);
+    color: black;
+}

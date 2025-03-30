@@ -1,23 +1,43 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import { Container } from './components/Container';
+import { Content } from './components/Content';
+import { FormCliente } from './components/FormCliente';
+import { Home } from './components/Home';
+import { Menu } from './components/Menu';
+import { Sidebar } from './components/Sidebar';
+import { Contato } from './components/Contato';
+import { QuemSomos } from './components/QuemSomos';
 
 function App() {
+
+const [ pagina,setPagina ] = useState('Home');
+
+function exibePagina(){
+  switch(pagina){
+    case 'Home':
+      return <Home  />
+    case 'FormCliente':
+      return <FormCliente pagina={pagina} setPagina={setPagina} />
+    case 'Contato':
+      return <Contato />
+    case 'QuemSomos':
+      return <QuemSomos />
+    default :
+      return ""
+  }
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+          <Menu pagina={pagina} setPagina={setPagina}/>
+          <Container>
+          <Content>
+            {exibePagina()}
+          </Content>
+          <Sidebar />
+          </Container>
     </div>
   );
 }
